@@ -9,7 +9,8 @@
     "lint": "next lint",
     "prepare": "husky",
     "pre-commit": "lint-staged",
-    "commitlint": "commitlint --config commitlint.config.cjs -e -V"
+    "commitlint": "commitlint --config commitlint.config.cjs -e -V",
+    "release": "release-it"
   },
   "dependencies": {
     "next": "15.1.7",
