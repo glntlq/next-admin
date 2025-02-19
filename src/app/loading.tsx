@@ -1,9 +1,7 @@
-import { Flex, Spin } from 'antd';
-
 export default function Loading() {
   return (
-    <Flex align="center" gap="middle" justify="center" style={{ height: '100%' }}>
-      <Spin />
-    </Flex>
+    <div className="flex justify-center items-center min-h-60">
+      <svg className="animate-spin h-10 w-10 mr-3" viewBox="0 0 24 24" />
+    </div>
   );
 }

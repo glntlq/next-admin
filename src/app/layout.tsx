@@ -1,13 +1,23 @@
-import BasicLayout from '@/components/BasicLayout'; // 全局布局
-import type { Metadata } from 'next';
-
-import { AntdRegistry } from '@ant-design/nextjs-registry';
-import 'antd/dist/reset.css';
 import './globals.scss';
 
+import type { Metadata } from 'next';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+
+import AppSideBar from '@/components/AppSideBar';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import { Separator } from '@/components/ui/separator';
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+
 export const metadata: Metadata = {
-  title: 'Next Admin',
-  description: '基于 Ant Design Next.js 的后台管理系统',
+  title: process.env.NEXT_PUBLIC_PROJECT_NAME,
+  description: process.env.NEXT_PUBLIC_PROJECT_DESC,
 };
 
 export default function RootLayout({
@@ -16,11 +26,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning>
       <body>
-        <AntdRegistry>
-          <BasicLayout>{children}</BasicLayout>
-        </AntdRegistry>
+        <NextThemesProvider attribute="class" defaultTheme="light">
+          <SidebarProvider>
+            <AppSideBar />
+            <SidebarInset>
+              <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b">
+                <div className="flex items-center gap-2 px-4">
+                  <SidebarTrigger className="-ml-1" />
+                  <Separator orientation="vertical" className="mr-2 h-4" />
+                  <Breadcrumb>
+                    <BreadcrumbList>
+                      <BreadcrumbItem className="hidden md:block">
+                        <BreadcrumbLink href="#">Building Your Application</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator className="hidden md:block" />
+                      <BreadcrumbItem>
+                        <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                      </BreadcrumbItem>
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                </div>
+              </header>
+              <main className="p-4">{children}</main>
+            </SidebarInset>
+          </SidebarProvider>
+        </NextThemesProvider>
       </body>
     </html>
   );
