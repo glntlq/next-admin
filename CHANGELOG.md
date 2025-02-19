@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0 (2025-02-19)
+
+* feat: 切换shadcn ui 库 ([c81df60](https://github.com/glntlq/nest-admin/commit/c81df60))
+
 ## <small>1.0.1 (2025-02-19)</small>
 
 * feat: zustand 状态库 ([5020f94](https://github.com/glntlq/nest-admin/commit/5020f94))
