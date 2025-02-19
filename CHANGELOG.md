@@ -1,5 +1,10 @@
 # Changelog
 
+## <small>1.0.1 (2025-02-19)</small>
+
+* feat: zustand 状态库 ([5020f94](https://github.com/glntlq/nest-admin/commit/5020f94))
+* style: eslint ([403c503](https://github.com/glntlq/nest-admin/commit/403c503))
+
 ## 1.0.0 (2025-02-18)
 
 * feat: 配置 husky commitLint等 ([a13572e](https://github.com/glntlq/nest-admin/commit/a13572e))
