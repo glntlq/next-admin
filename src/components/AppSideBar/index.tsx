@@ -31,7 +31,7 @@ export default function AppSideBar({ ...props }: React.ComponentProps<typeof Sid
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <div className="flex items-center gap-2 cursor-pointer">
-                <Image src="/logo.svg" width={50} height={50} alt="logo" />
+                <Image src="/logo.svg" width={40} height={40} alt="logo" />
                 <span className="truncate font-semibold">{process.env.NEXT_PUBLIC_PROJECT_NAME}</span>
               </div>
             </SidebarMenuButton>

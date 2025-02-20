@@ -1,58 +1,45 @@
 import './globals.scss';
 
 import type { Metadata } from 'next';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 
 import AppSideBar from '@/components/AppSideBar';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { Separator } from '@/components/ui/separator';
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import GlobalHeader from '@/components/GlobalHeader'; // 头部布局
+import { ThemeProvider } from '@/components/ThemeProvider';
+
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { Toaster } from '@/components/ui/sonner';
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_PROJECT_NAME,
   description: process.env.NEXT_PUBLIC_PROJECT_DESC,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
   return (
-    <html suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body>
-        <NextThemesProvider attribute="class" defaultTheme="light">
-          <SidebarProvider>
-            <AppSideBar />
-            <SidebarInset>
-              <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b">
-                <div className="flex items-center gap-2 px-4">
-                  <SidebarTrigger className="-ml-1" />
-                  <Separator orientation="vertical" className="mr-2 h-4" />
-                  <Breadcrumb>
-                    <BreadcrumbList>
-                      <BreadcrumbItem className="hidden md:block">
-                        <BreadcrumbLink href="#">Building Your Application</BreadcrumbLink>
-                      </BreadcrumbItem>
-                      <BreadcrumbSeparator className="hidden md:block" />
-                      <BreadcrumbItem>
-                        <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                      </BreadcrumbItem>
-                    </BreadcrumbList>
-                  </Breadcrumb>
-                </div>
-              </header>
-              <main className="p-4">{children}</main>
-            </SidebarInset>
-          </SidebarProvider>
-        </NextThemesProvider>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <SidebarProvider>
+              <AppSideBar />
+              <SidebarInset>
+                <GlobalHeader />
+                <main className="p-4">{children}</main>
+              </SidebarInset>
+            </SidebarProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   );
