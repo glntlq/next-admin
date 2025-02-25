@@ -6,6 +6,8 @@ export enum ROUTES_NAME {
   ABOUT = 'about',
   SYSTEM_MANAGE = 'system-manage',
   INTERNATIONALIZATION = 'internationalization',
+  FEATURES = 'features',
+  VIEWER = 'viewer',
 }
 
 /**
@@ -28,7 +30,16 @@ export enum RESPONSE_MSG {
 export enum UNIFORM_TEXT {
   NULL = '--',
 }
+
 /** @description: localstorage key */
 export enum LOCALSTORAGE_KEY {
   TOKEN = 'token',
+}
+
+/**
+ * @description: 国际化语言
+ */
+export enum LOCALES {
+  zh = 'zh', // 中文
+  en = 'en', // 英文
 }

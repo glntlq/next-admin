@@ -1,8 +1,5 @@
+import { Button } from '@/components/ui/button';
+
 export default function Home() {
-  return (
-    <div className="App">
-      {/* <Button type="primary">Button</Button>
-      <Tag>111</Tag> */}
-    </div>
-  );
+  return <Button>首页</Button>;
 }

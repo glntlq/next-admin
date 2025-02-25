@@ -1,6 +1,14 @@
+/*
+ * @Author: 白雾茫茫丶<baiwumm.com>
+ * @Date: 2024-12-11 16:17:04
+ * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditTime: 2024-12-20 09:26:26
+ * @Description: 列项设置
+ */
 'use client';
+import { cn } from '@nextui-org/react';
+import { RiArrowDownLine, RiArrowUpLine, RiExpandUpDownLine, RiEyeOffLine } from '@remixicon/react';
 import { Column } from '@tanstack/react-table';
-import { ArrowDown, ArrowUp, ChevronsUpDown, EyeOff } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
@@ -11,7 +19,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { cn } from '@/lib/utils';
 
 interface DataTableColumnHeaderProps<TData, TValue> extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
@@ -34,26 +41,26 @@ export default function ColumnSorting<TData, TValue>({
           <Button variant="ghost" size="sm" className="-ml-3 h-8 data-[state=open]:bg-accent">
             <span>{title}</span>
             {column.getIsSorted() === 'desc' ? (
-              <ArrowDown />
+              <RiArrowDownLine />
             ) : column.getIsSorted() === 'asc' ? (
-              <ArrowUp />
+              <RiArrowUpLine />
             ) : (
-              <ChevronsUpDown />
+              <RiExpandUpDownLine />
             )}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start">
           <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
-            <ArrowUp className="h-3.5 w-3.5 text-muted-foreground/70" />
+            <RiArrowUpLine className="h-3.5 w-3.5 text-muted-foreground/70" />
             {t('asc')}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
-            <ArrowDown className="h-3.5 w-3.5 text-muted-foreground/70" />
+            <RiArrowDownLine className="h-3.5 w-3.5 text-muted-foreground/70" />
             {t('desc')}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => column.toggleVisibility(false)}>
-            <EyeOff className="h-3.5 w-3.5 text-muted-foreground/70" />
+            <RiEyeOffLine className="h-3.5 w-3.5 text-muted-foreground/70" />
             {t('hide')}
           </DropdownMenuItem>
         </DropdownMenuContent>

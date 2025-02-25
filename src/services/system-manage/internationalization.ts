@@ -1,4 +1,11 @@
-import { httpRequest } from '@/utils/request';
+/*
+ * @Author: 白雾茫茫丶<baiwumm.com>
+ * @Date: 2024-12-13 09:27:17
+ * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditTime: 2024-12-20 10:07:12
+ * @Description: 国际化模块
+ */
+import { httpRequest } from '@/lib/request';
 
 const BASE_URL = '/system-manage/internationalization';
 

@@ -1,3 +1,11 @@
+/*
+ * @Author: 白雾茫茫丶<baiwumm.com>
+ * @Date: 2024-12-06 10:31:59
+ * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditTime: 2024-12-06 10:32:02
+ * @Description: 404页面
+ */
+
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';

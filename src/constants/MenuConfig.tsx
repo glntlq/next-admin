@@ -1,4 +1,11 @@
-import { Globe, Info, MonitorPause, Settings } from 'lucide-react';
+import {
+  RiApps2AiLine,
+  RiFlowerLine,
+  RiGlobalLine,
+  RiImageAddLine,
+  RiInformationLine,
+  RiSettings2Line,
+} from '@remixicon/react';
 
 import { ROUTES_NAME } from '@/enums';
 
@@ -12,6 +19,16 @@ export const MenuList: MenuListType[] = [
   {
     path: `/${ROUTES_NAME.DASHBOARD}`,
     name: ROUTES_NAME.DASHBOARD,
+  },
+  {
+    path: `/${ROUTES_NAME.FEATURES}`,
+    name: ROUTES_NAME.FEATURES,
+    children: [
+      {
+        path: `/${ROUTES_NAME.FEATURES}/${ROUTES_NAME.VIEWER}`,
+        name: ROUTES_NAME.VIEWER,
+      },
+    ],
   },
   {
     path: `/${ROUTES_NAME.SYSTEM_MANAGE}`,
@@ -33,8 +50,10 @@ export const MenuList: MenuListType[] = [
  * @description: 菜单图标映射
  */
 export const MenuIconMap: Record<ROUTES_NAME, React.ReactNode> = {
-  [ROUTES_NAME.DASHBOARD]: <MonitorPause />,
-  [ROUTES_NAME.SYSTEM_MANAGE]: <Settings />,
-  [ROUTES_NAME.INTERNATIONALIZATION]: <Globe />,
-  [ROUTES_NAME.ABOUT]: <Info />,
+  [ROUTES_NAME.DASHBOARD]: <RiApps2AiLine />,
+  [ROUTES_NAME.SYSTEM_MANAGE]: <RiSettings2Line />,
+  [ROUTES_NAME.INTERNATIONALIZATION]: <RiGlobalLine />,
+  [ROUTES_NAME.ABOUT]: <RiInformationLine />,
+  [ROUTES_NAME.FEATURES]: <RiFlowerLine />,
+  [ROUTES_NAME.VIEWER]: <RiImageAddLine />,
 };

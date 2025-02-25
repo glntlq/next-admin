@@ -1,4 +1,12 @@
+/*
+ * @Author: 白雾茫茫丶<baiwumm.com>
+ * @Date: 2024-12-11 15:20:57
+ * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditTime: 2024-12-19 14:10:02
+ * @Description: 表格列表
+ */
 'use client';
+import { RiAddLine } from '@remixicon/react';
 import {
   ColumnDef,
   flexRender,
@@ -9,14 +17,15 @@ import {
   useReactTable,
   VisibilityState,
 } from '@tanstack/react-table';
-import { Loader2, Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Fragment, useState } from 'react';
 import type { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 
+import ContentLoading from '@/components/ContentLoading';
 import ColumnVisiable from '@/components/DataTable/ColumnVisiable';
 import { Button } from '@/components/ui/button';
+import { Empty } from '@/components/ui/empty';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
 import { searchFormSchema } from './formSchema';
@@ -52,28 +61,29 @@ export default function DataTable({ columns, data, loading = false, refresh, set
       sorting,
     },
   });
-
   return (
-    <div>
-      <div className="flex justify-between items-center pb-4">
+    <div className="w-full flex flex-col gap-4">
+      <div className="flex justify-between items-center">
         <div className="flex items-center gap-2 flex-wrap">
           <HeaderSearch loading={loading} refresh={refresh} form={form} />
           <Button variant="outline" size="sm" className="border-dashed" onClick={() => setOpen(true)}>
-            <Plus />
+            <RiAddLine />
             {t('add')}
           </Button>
         </div>
         {/* 列设置项 */}
         <ColumnVisiable table={table} field="internationalization" />
       </div>
-      <div className="rounded-md border">
+      <div className={`relative rounded-md border transition-opacity opacity-${loading ? '50' : '100'}`}>
+        <ContentLoading loading={loading} />
+
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className="text-center">
+                    <TableHead key={header.id} className="text-center" style={{ width: `${header.getSize()}px` }}>
                       {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
                   );
@@ -82,15 +92,7 @@ export default function DataTable({ columns, data, loading = false, refresh, set
             ))}
           </TableHeader>
           <TableBody>
-            {loading ? (
-              <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                  <div className="flex justify-center">
-                    <Loader2 className="animate-spin" />
-                  </div>
-                </TableCell>
-              </TableRow>
-            ) : table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <Fragment key={row.id}>
                   <TableRow data-state={row.getIsSelected() && 'selected'}>
@@ -105,7 +107,7 @@ export default function DataTable({ columns, data, loading = false, refresh, set
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  {t('noData')}
+                  <Empty />
                 </TableCell>
               </TableRow>
             )}

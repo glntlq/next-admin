@@ -1,4 +1,12 @@
-import { Loader2, RotateCcw, Search } from 'lucide-react';
+/*
+ * @Author: 白雾茫茫丶<baiwumm.com>
+ * @Date: 2024-12-11 17:52:58
+ * @LastEditors: 白雾茫茫丶<baiwumm.com>
+ * @LastEditTime: 2024-12-19 14:14:06
+ * @Description: 头部搜索
+ */
+import { Spinner } from '@nextui-org/react';
+import { RiResetLeftLine, RiSearchLine } from '@remixicon/react';
 import { useTranslations } from 'next-intl';
 import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
@@ -65,12 +73,12 @@ export default function HeaderSearch({ loading = false, refresh, form }: HeaderS
           )}
         />
         <Button variant="outline" size="sm" disabled={loading} type="submit">
-          {loading ? <Loader2 className="animate-spin" /> : <Search />}
+          {loading ? <Spinner size="sm" /> : <RiSearchLine />}
           {tGlobal('search')}
         </Button>
       </form>
       <Button variant="outline" size="sm" onClick={resetForm}>
-        <RotateCcw />
+        <RiResetLeftLine />
         {tGlobal('reset')}
       </Button>
     </Form>

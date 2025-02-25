@@ -3,13 +3,36 @@
     "about":"关于",
     "dashboard":"仪表盘",
     "system-manage":"系统管理",
-    "internationalization":"国际化"
+    "internationalization":"国际化",
+    "features":"功能页",
+    "viewer":"图片预览"
   },
   "Pages":{
     "internationalization":{
       "name":"国际化字段",
       "zh":"中文",
       "en":"英文"
+    },
+    "dashboard":{
+      "sales-total":"总销售额",
+      "sales-complete-rate":"前年同期业绩完成率",
+      "daily":"日同比",
+      "week":"周同比",
+      "page-view":"访问量",
+      "daily-visits":"日访问量",
+      "payment-number":"支付笔数",
+      "conversion-rate":"转化率",
+      "customer-satisfaction":"客户满意度",
+      "read":"阅读",
+      "published":"发布于",
+      "words":"字数",
+      "get-latest":"获取最新",
+      "github-log":"Github 提交日志",
+      "committed":"提交于"
+    },
+    "about":{
+      "dependencies":"生产环境依赖",
+      "dev-dependencies":"开发环境依赖"
     }
   },
   "Global":{
@@ -28,6 +51,18 @@
     "loading":"加载中...",
     "enter":"请输入",
     "select":"请选择",
-    "submit":"提交"
+    "submit":"提交",
+    "parent":"父级",
+    "parentTip":"不选默认为顶级"
+  },
+  "App":{
+    "light":"浅色模式",
+    "dark":"深色模式",
+    "full-screen":"全屏",
+    "exit-full-screen":"退出全屏",
+    "website-statistics":"网站统计",
+    "wechat":"微信",
+    "blog":"博客",
+    "back-top":"回到顶部"
   }
 }

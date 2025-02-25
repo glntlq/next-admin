@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 
 import { RESPONSE_MSG } from '@/enums';
-import { prisma } from '@/lib/prisma';
-import { responseMessage } from '@/utils';
+import prisma from '@/lib/prisma';
+import { responseMessage } from '@/lib/utils';
 
 /**
  * @description: 更新国际化

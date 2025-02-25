@@ -3,13 +3,36 @@
     "about":"About",
     "dashboard":"Dashboard",
     "system-manage":"System Manage",
-    "internationalization":"Internationalization"
+    "internationalization":"Internationalization",
+    "features":"Features",
+    "viewer":"Viewer"
   },
   "Pages":{
     "internationalization":{
       "name":"Name",
       "zh":"Chinese",
       "en":"English"
+    },
+    "dashboard":{
+      "sales-total":"Gross sales",
+      "sales-complete-rate":"completion rate last year",
+      "daily":"Daily on-year",
+      "week":"Weekly on-year",
+      "page-view":"Page View",
+      "daily-visits":"Daily Visits",
+      "payment-number":"Payment Number",
+      "conversion-rate":"Conversion Rate",
+      "customer-satisfaction":"Customer Satisfaction",
+      "read":"Read",
+      "published":"Published",
+      "words":"Words",
+      "get-latest":"Get Latest",
+      "github-log":"Github Commits",
+      "committed":"Committed"
+    },
+    "about":{
+      "dependencies":"Dependencies",
+      "dev-dependencies":"DevDependencies"
     }
   },
   "Global":{
@@ -28,6 +51,18 @@
     "loading":"Loading...",
     "enter":"Please enter",
     "select":"Please select",
-    "submit":"Submit"
+    "submit":"Submit",
+    "parent":"Parent",
+    "parentTip":"The default is top-level"
+  },
+  "App":{
+    "light":"Light Mode",
+    "dark":"Dark Mode",
+    "full-screen":"Full Screen",
+    "exit-full-screen":"Exit Full Screen",
+    "website-statistics":"Website Statistics",
+    "wechat":"Wechat",
+    "blog":"Blog",
+    "back-top":"Back Top"
   }
 }

@@ -1,10 +1,26 @@
 'use client';
-import { useTranslations } from 'next-intl';
+
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
+
+import GithubCommit from './components/GithubCommit';
+import JuejinArticle from './components/JuejinArticle'; // 掘金文章列表
+import StatisticChart from './components/StatisticChart'; // 指标卡片
+
 export default function Dashboard() {
-  const t = useTranslations('Route');
   return (
-    <div className="flex justify-center items-center font-black text-4xl" style={{ height: 'calc(100vh - 96px)' }}>
-      {t('dashboard')}
+    <div className="flex flex-col gap-4">
+      {/* 指标卡片 */}
+      <StatisticChart />
+      {/* 掘金文章列表 */}
+      <ResizablePanelGroup direction="horizontal" className="items-stretch">
+        <ResizablePanel defaultSize={60} minSize={30}>
+          <JuejinArticle />
+        </ResizablePanel>
+        <ResizableHandle withHandle />
+        <ResizablePanel defaultSize={40} minSize={30}>
+          <GithubCommit />
+        </ResizablePanel>
+      </ResizablePanelGroup>
     </div>
   );
 }
