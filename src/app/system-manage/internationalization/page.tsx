@@ -1,10 +1,3 @@
-/*
- * @Author: 白雾茫茫丶<baiwumm.com>
- * @Date: 2024-12-10 10:47:16
- * @LastEditors: 白雾茫茫丶<baiwumm.com>
- * @LastEditTime: 2024-12-19 14:22:17
- * @Description: 国际化
- */
 'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Spinner } from '@nextui-org/react';
@@ -22,13 +15,13 @@ import { z } from 'zod';
 import ColumnSorting from '@/components/DataTable/ColumnSorting';
 import { Badge } from '@/components/ui/badge';
 import { UNIFORM_TEXT } from '@/enums';
+import { isSuccess } from '@/lib/utils';
 import {
   addInternalization,
   delInternalization,
   getInternalizationList,
   updateInternalization,
 } from '@/services/system-manage/internationalization';
-import { isSuccess } from '@/lib/utils';
 
 import ColumnOperation from './components/CloumnOperation';
 import DataTable from './components/DataTable';
@@ -162,8 +155,8 @@ export default function Internationalization() {
       cell: ({ row }) => dayjs(row.getValue('createdAt')).format('YYYY-MM-DD HH:mm:ss'),
     },
     {
-      accessorKey: 'operation',
-      header: tGlobal('operation'),
+      accessorKey: 'action',
+      header: tGlobal('action'),
       size: 50,
       cell: ({ row }) =>
         delLoading && id === row.original.id ? (

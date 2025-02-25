@@ -23,8 +23,8 @@ export default function About() {
                 hideIcon
                 title={
                   <div className="flex items-center justify-between">
-                    <span className="font-bold">{key}</span>
-                    <Chip>{pkg.dependencies[key]}</Chip>
+                    <span className="text-xs font-bold">{key}</span>
+                    <Chip size="sm">{pkg.dependencies[key]}</Chip>
                   </div>
                 }
               />

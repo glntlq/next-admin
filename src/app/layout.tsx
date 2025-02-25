@@ -16,6 +16,7 @@ import AppSideBar from '@/components/AppSideBar';
 import FullLoading from '@/components/FullLoading'; // 全局 Loading
 import GlobalFooter from '@/components/GlobalFooter';
 import GlobalHeader from '@/components/GlobalHeader'; // 头部布局
+import PageAnimatePresence from '@/components/PageAnimatePresence';
 import ThemeProvider from '@/components/ThemeProvider';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/sonner';
@@ -45,8 +46,7 @@ export default async function RootLayout({
                 <SidebarInset>
                   {/* 头部布局 */}
                   <GlobalHeader />
-                  <main className="p-4">{children}</main>
-                  {/* 底部版权 */}
+                  <PageAnimatePresence>{children}</PageAnimatePresence> {/* 底部版权 */}
                   <GlobalFooter />
                 </SidebarInset>
               </SidebarProvider>
